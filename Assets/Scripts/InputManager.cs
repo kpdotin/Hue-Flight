@@ -51,7 +51,6 @@ public class InputManager : MonoBehaviour
 
     void DetectMovement(Vector2 pos)
     {
-        Debug.Log(pos);
         if(pos.x < 541f) { OnLeftTap?.Invoke(); }
         if(pos.x > 540f) { OnRightTap?.Invoke(); }
     }
