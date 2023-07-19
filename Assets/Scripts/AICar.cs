@@ -45,8 +45,8 @@ public class AICar : MonoBehaviour
     {
         int curr = ExtractNumberFromString(ai.checkpoints.GetChild(ai.idx).name);
         int next = curr + 1;
-        //if (next > ai.checkpoints.childCount - 1)
-        //    next = 0;
+        if (next > ai.checkpoints.childCount - 1)
+            next = 0;
 
         //Debug.Log(string.Format("current checkpoint {0}, next {1}", curr, next));
 

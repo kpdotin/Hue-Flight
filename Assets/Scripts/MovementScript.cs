@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -7,6 +8,7 @@ public class MovementScript : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
     [SerializeField] float forwardSpeed;
+    [SerializeField] float rotateSpeed;
     [SerializeField] Transform ship;
 
     private InputManager inputManager;
@@ -36,42 +38,43 @@ public class MovementScript : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        float rotateZ =  ship.localRotation.eulerAngles.z;
-        float rotateY = ship.localRotation.eulerAngles.y;
-        float rotateX = ship.localRotation.eulerAngles.x;
         if (!canceled)
         {
             if (leftTap)
             {
                 rb.velocity = transform.TransformDirection(new Vector3(movementSpeed * (-1), 0, movementSpeed));
+
                 rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
-                ship.Rotate(0, 7, 0);
-                //float roll = Mathf.Lerp(-90, -120, 1);
-                //ship.localRotation = Quaternion.Euler(Vector3.forward * roll);
-                
+
+                ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed, -90, -135), 90, 90);
+                //ship.Rotate(0, rotateSpeed, 0);
+                //ship.Rotate(0, Mathf.Clamp(rotateSpeed,-120,-90), 0);
+
             }
 
 
             if (rightTap)
             {
                 rb.velocity = transform.TransformDirection(new Vector3(movementSpeed, 0, movementSpeed));
+
                 rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
-                ship.Rotate(0, -7, 0);
-                //float roll = Mathf.Lerp(-90, -60, 1);
-                //ship.localRotation = Quaternion.Euler(Vector3.forward * roll);
+
+                ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed * (-1), -90, -45), 90,90);
+                //ship.Rotate(0, rotateSpeed * (-1), 0);
+                //ship.Rotate(0, Mathf.Clamp(rotateSpeed * (-1),-90,-60), 0);
 
             }
+
         }
+
         if (canceled)
         {
-            ship.localRotation = Quaternion.Euler(-90,90,90);
+            ship.localRotation = Quaternion.Euler(-90, 90, 90);
         }
 
     }
-
 
 
     void OnRightTap()
