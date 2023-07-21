@@ -7,6 +7,8 @@ public class ColorChange : MonoBehaviour
 {
     bool toggleColor = false;
     private Material playerMat;
+    [SerializeField] Material Red;
+    [SerializeField] Material Blue;
     private void Start()
     {
         playerMat = GetComponent<Renderer>().material;
@@ -20,11 +22,11 @@ public class ColorChange : MonoBehaviour
     {
         if (!toggleColor)
         {
-            playerMat.color = new Color(1, 0, 0);
+            playerMat.color = Red.color;
         }
         else
         {
-            playerMat.color = new Color(0, 0.2694f, 1);
+            playerMat.color = Blue.color;
         }
     }
 }
