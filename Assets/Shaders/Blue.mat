@@ -61,7 +61,7 @@ Material:
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 2
-    - _fresnel_effect: 2.7
+    - _fresnel_effect: 4.26
     - _offset: 10
     - _scroll_speed: 0
     m_Colors:
