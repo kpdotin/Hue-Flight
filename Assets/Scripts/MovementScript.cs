@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -49,9 +50,9 @@ public class MovementScript : MonoBehaviour
                 rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
 
                 ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed, -90, -135), 90, 90);
-                //ship.Rotate(0, rotateSpeed, 0);
-                //ship.Rotate(0, Mathf.Clamp(rotateSpeed,-120,-90), 0);
 
+                //DOTWEEN
+                //ship.DOLocalRotate(new Vector3(-135, 90, 90), 0.5f);
             }
 
 
@@ -62,8 +63,9 @@ public class MovementScript : MonoBehaviour
                 rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
 
                 ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed * (-1), -90, -45), 90,90);
-                //ship.Rotate(0, rotateSpeed * (-1), 0);
-                //ship.Rotate(0, Mathf.Clamp(rotateSpeed * (-1),-90,-60), 0);
+
+                //DOTWEEN
+                //ship.DOLocalRotate(new Vector3(-45, 90, 90), 0.5f);
 
             }
 
