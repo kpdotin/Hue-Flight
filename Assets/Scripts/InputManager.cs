@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
     private TouchControls playerControls;
+    [SerializeField] private RectTransform buttonTransform;
 
     #region EVENTS
     public delegate void TouchStarted();
@@ -46,13 +44,14 @@ public class InputManager : MonoBehaviour
     }
 
     void TouchStart(InputAction.CallbackContext ctx) { OnTouchStarted?.Invoke(); }
-    void TouchDetect(InputAction.CallbackContext ctx){ OnTouchDetected?.Invoke(ScreenPosition()); }
+    void TouchDetect(InputAction.CallbackContext ctx) { OnTouchDetected?.Invoke(ScreenPosition()); }
     void TouchCancel(InputAction.CallbackContext ctx) { OnTouchCanceled?.Invoke(); }
     public Vector2 ScreenPosition() { return playerControls.Touch.Position.ReadValue<Vector2>(); }
 
     void DetectMovement(Vector2 pos)
     {
-        if(pos.x < 541f) { OnLeftTap?.Invoke(); }
-        if(pos.x > 540f) { OnRightTap?.Invoke(); }
+        if (RectTransformUtility.RectangleContainsScreenPoint(buttonTransform, pos)) return;
+        if (pos.x < 541f) { OnLeftTap?.Invoke(); }
+        if (pos.x > 540f) { OnRightTap?.Invoke(); }
     }
 }
