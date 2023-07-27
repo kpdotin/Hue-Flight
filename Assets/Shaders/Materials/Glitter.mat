@@ -88,22 +88,22 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Base_Gradiant_Power: 2.4
+    - _Base_Gradiant_Power: 0.9
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Power: 3.49
-    - _Glitter_Offset: 0.578
+    - _Fresnel_Power: 0.8
+    - _Glitter_Offset: 0.6
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -126,13 +126,13 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Base_Color_1: {r: 0.509434, g: 0.0656817, b: 0.38316312, a: 0}
-    - _Base_Color_2: {r: 0.49685526, g: 0.95182663, b: 1, a: 0}
+    - _Base_Color_1: {r: 1, g: 0.07232696, b: 0.73729604, a: 0}
+    - _Base_Color_2: {r: 0.32704395, g: 0.9369104, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Fresnel_Color: {r: 0.8679245, g: 0, b: 0.6438296, a: 0}
     - _Glitter_Color: {r: 0.99215686, g: 0.07058824, b: 0.68760514, a: 0}
-    - _Noise_Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Noise_Scale: {r: 8, g: 8, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7889684546736849031
