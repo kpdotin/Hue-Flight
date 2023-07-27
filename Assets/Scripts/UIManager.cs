@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image ttp;
     [SerializeField] private Image title;
-    [SerializeField] GameObject MainPanel;
+    [SerializeField] GameObject MainPanel; //Parent holding both MainScreen{Panel} and Settings {Panel}
     [SerializeField] GameObject TitlePanel;
     [SerializeField] GameObject MainScreen;
 
@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite SoundON;
     [SerializeField] Sprite SoundOFF;
 
+    [SerializeField] GameObject ShopPanel;
+    [SerializeField] Image ViewPort;
+    [SerializeField] GameObject ShopFlight;
 
     private void Update()
     {
@@ -163,5 +166,35 @@ public class UIManager : MonoBehaviour
     public void ToggleSound() {
         SoundOn = !SoundOn;
     } 
+
+    public void OnShopsEnter()
+    {
+        MainScreenOut();
+        MainPanel.SetActive(false);
+        Flight.transform.DOMove(new Vector3(1.26199996f, 1.46500003f, -7.91300011f), 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
+        {
+            ShopPanel.SetActive(true);
+            ViewPort.DOFade(1f, 1f);
+            ShopFlight.SetActive(true);
+            Flight.transform.position = new Vector3(-0.776000023f, 1.70000005f, -8.68500042f);
+            Flight.SetActive(false);
+        });
+        
+        
+    }
+
+    public void OnShopsExit()
+    {
+        ShopPanel.GetComponent<Image>().DOFade(0, 0.5f).OnComplete(() =>
+        {
+            ViewPort.DOFade(0, 0.5f);
+            ShopPanel.SetActive(false);
+            Flight.SetActive(true);
+            Flight.transform.DOMove(new Vector3(0.05f, 1.46f, -8.35f), 0.5f).SetEase(Ease.InOutSine);
+            MainPanel.SetActive(true);
+            MainScreenIn();
+        });
+        
+    }
 
 }

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class RotateSky : MonoBehaviour
 {
-    public float rotateSpeed;
+    [SerializeField]
+    private float tumble = 1;
 
-    public Material skybox;
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", rotateSpeed * Time.deltaTime);
-
+        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
     }
 }

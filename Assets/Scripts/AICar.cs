@@ -48,7 +48,7 @@ public class AICar : MonoBehaviour
         if (next > ai.checkpoints.childCount - 1)
             next = 0;
 
-        //Debug.Log(string.Format("current checkpoint {0}, next {1}", curr, next));
+        Debug.Log(string.Format("current checkpoint {0}, next {1}", curr, next));
 
         return next;
     }
