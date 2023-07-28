@@ -1,5 +1,5 @@
-using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -19,23 +19,48 @@ public class InGameUI : MonoBehaviour
 
     public GameObject pausePanel;
 
-    
+    public TextMeshProUGUI displayTimer;
+
+    ShieldPower shieldPower;
+    AsteroidRotate obstacleCollision;
+    public bool shieldTimerOn = false;
+    int shieldTimer = 10;
     private void Start()
     {
+        obstacleCollision = FindObjectOfType<AsteroidRotate>();
+        shieldPower = FindObjectOfType<ShieldPower>();
         colorChangeScript = FindObjectOfType<ColorChange>();
     }
     private void OnEnable()
     {
         OnCoinCollected += CoinUpdater;
+        shieldPower.shieldEvent += ShieldToggle;
     }
     private void OnDisable()
     {
         OnCoinCollected -= CoinUpdater;
+        shieldPower.shieldEvent -= ShieldToggle;
     }
     // Update is called once per frame
     void Update()
     {
         orbsText.text = "Orbs : " + coinsCollected.ToString();
+
+        if (shieldTimerOn)
+        {
+            if(shieldTimer > 0)
+            {
+                displayTimer.text ="Shield Time Left : " + shieldTimer.ToString();
+                shieldTimer -= (int)Time.deltaTime;
+            }
+            else
+            {
+                ShieldToggle();
+                shieldTimer = 10;
+                obstacleCollision.shieldOn = false;
+            }
+        }
+
         if (colorChangeScript.toggleColor)
         {
             colorChangeButton.image.sprite = RedButton;
@@ -50,7 +75,7 @@ public class InGameUI : MonoBehaviour
     {
         coinsCollected++;
     }
-    
+
     public void PauseGame()
     {
         pausePanel.SetActive(true);
@@ -70,5 +95,10 @@ public class InGameUI : MonoBehaviour
     public void Back()
     {
         SceneManager.LoadScene(0);
+    }
+
+    void ShieldToggle()
+    {
+        shieldTimerOn = !shieldTimerOn;
     }
 }
