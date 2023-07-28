@@ -1,13 +1,24 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
     public delegate void CoinCollected();
     public CoinCollected OnCoinCollected;
 
+    public Button colorChangeButton;
+    public Sprite RedButton;
+    public Sprite BlueButton;
+
+    private ColorChange colorChangeScript;
     int coinsCollected;
-    public TextMeshProUGUI coinsText;
+    public TextMeshProUGUI orbsText;
+
+    private void Start()
+    {
+        colorChangeScript = FindObjectOfType<ColorChange>();
+    }
     private void OnEnable()
     {
         OnCoinCollected += CoinUpdater;
@@ -19,7 +30,15 @@ public class InGameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinsText.text = "Orbs : " + coinsCollected.ToString();
+        orbsText.text = "Orbs : " + coinsCollected.ToString();
+        if (colorChangeScript.toggleColor)
+        {
+            colorChangeButton.image.sprite = RedButton;
+        }
+        else
+        {
+            colorChangeButton.image.sprite = BlueButton;
+        }
     }
 
     void CoinUpdater()

@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image title;
     [SerializeField] GameObject MainPanel; //Parent holding both MainScreen{Panel} and Settings {Panel}
     [SerializeField] GameObject TitlePanel;
+    bool titlePanel = false;
     [SerializeField] GameObject MainScreen;
 
     [SerializeField] GameObject Flight;
@@ -39,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (ttp.color.a >= 0.9f)
+        if (ttp.color.a >= 0.9f && !titlePanel)
         {
             StartCoroutine(TestFade());
         }
@@ -67,11 +68,6 @@ public class UIManager : MonoBehaviour
 
     private void Fade(float endValue, float duration)
     {
-        //if (fadeTween != null)
-        //{
-        //    fadeTween.Kill(false);
-        //}
-
         ttp.DOFade(endValue, duration);
     }
 
@@ -92,6 +88,7 @@ public class UIManager : MonoBehaviour
         ttp.transform.DOLocalMove(new Vector3(0, -1081, 0), 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
             MainPanel.SetActive(true);
+            titlePanel = true;
             TitlePanel.SetActive(false);
             MainScreenIn();
         });
