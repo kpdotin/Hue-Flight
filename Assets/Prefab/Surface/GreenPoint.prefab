@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6838155219474994221}
   - component: {fileID: 438038322946093612}
   - component: {fileID: 5143267325967669352}
+  - component: {fileID: 8277559515846640457}
   m_Layer: 0
   m_Name: GreenPoint
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 1.7975432, z: 10.000002}
   m_Center: {x: 0, y: 0.8978197, z: 0}
+--- !u!114 &8277559515846640457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375297069020420597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920a992e40e56ca4badf4d6c4bf7b60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

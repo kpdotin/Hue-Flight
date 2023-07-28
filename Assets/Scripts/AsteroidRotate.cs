@@ -33,7 +33,7 @@ public class AsteroidRotate : MonoBehaviour
     {
         if (!shieldOn || !timerCondition.shieldTimerOn)
         {
-            Debug.Log("Game Over");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(10);
         }
         else
         {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6618418562669261711}
   - component: {fileID: 8944432391201342878}
   - component: {fileID: 1664754816234035450}
+  - component: {fileID: -4971412443955712607}
   m_Layer: 0
   m_Name: RedShort
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.999997, y: 2.1829958, z: 10}
   m_Center: {x: 0.00000072248037, y: 0.929871, z: 0}
+--- !u!114 &-4971412443955712607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063519678621493238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4f03611e533054393edd77b2ed6521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

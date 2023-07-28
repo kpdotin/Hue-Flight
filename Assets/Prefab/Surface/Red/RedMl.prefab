@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3841223519691939442}
   - component: {fileID: 6050661566382660309}
   - component: {fileID: 1800732173237868961}
+  - component: {fileID: -5113391314245049760}
   m_Layer: 0
   m_Name: RedMl
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 2.3223429, z: 10.000001}
   m_Center: {x: 0, y: 1.0495553, z: -0}
+--- !u!114 &-5113391314245049760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735827036614988628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4f03611e533054393edd77b2ed6521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

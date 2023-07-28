@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2176894954792145796}
   - component: {fileID: 6439040311464274911}
   - component: {fileID: 248689248905350103}
+  - component: {fileID: -5713497048500788110}
   m_Layer: 0
   m_Name: BlueMed
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.000002, y: 2.8273497, z: 10.000001}
   m_Center: {x: -0, y: 1.3335328, z: 0}
+--- !u!114 &-5713497048500788110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8489920469783854491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8008347bdc252c04db4128abf8aaaac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
