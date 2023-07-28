@@ -1352,6 +1352,10 @@ PrefabInstance:
       propertyPath: buttonTransform
       value: 
       objectReference: {fileID: 1018715681}
+    - target: {fileID: 5187965639688204082, guid: ae40750827925eb46ab77f459e811e0e, type: 3}
+      propertyPath: toggleColor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7857872370577628720, guid: ae40750827925eb46ab77f459e811e0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0011922171
