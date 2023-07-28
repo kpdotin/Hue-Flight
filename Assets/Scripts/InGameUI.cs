@@ -1,5 +1,7 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
@@ -15,6 +17,9 @@ public class InGameUI : MonoBehaviour
     int coinsCollected;
     public TextMeshProUGUI orbsText;
 
+    public GameObject pausePanel;
+
+    
     private void Start()
     {
         colorChangeScript = FindObjectOfType<ColorChange>();
@@ -44,5 +49,26 @@ public class InGameUI : MonoBehaviour
     void CoinUpdater()
     {
         coinsCollected++;
+    }
+    
+    public void PauseGame()
+    {
+        pausePanel.SetActive(true);
+        colorChangeButton.interactable = false;
+        colorChangeButton.image.enabled = false;
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+        colorChangeButton.interactable = true;
+        colorChangeButton.image.enabled = true;
+
+    }
+
+    public void Back()
+    {
+        SceneManager.LoadScene(0);
     }
 }

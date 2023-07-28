@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     private TouchControls playerControls;
     [SerializeField] private RectTransform buttonTransform;
+    [SerializeField] private RectTransform pauseTransform;
 
     #region EVENTS
     public delegate void TouchStarted();
@@ -51,6 +52,7 @@ public class InputManager : MonoBehaviour
     void DetectMovement(Vector2 pos)
     {
         if (RectTransformUtility.RectangleContainsScreenPoint(buttonTransform, pos)) return;
+        if (RectTransformUtility.RectangleContainsScreenPoint(pauseTransform, pos)) return;
         if (pos.x < 541f) { OnLeftTap?.Invoke(); }
         if (pos.x > 540f) { OnRightTap?.Invoke(); }
     }

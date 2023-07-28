@@ -200,7 +200,7 @@ public class UIManager : MonoBehaviour
     public void LevelSelect()
     {
         string objName = EventSystem.current.currentSelectedGameObject.name;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(objName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(int.Parse(objName));
     }
 
     public void OnArcadeEnter()

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ColorChange : MonoBehaviour
 {
-    public bool toggleColor = true;
+    public bool toggleColor = false;
     private Material playerMat;
     [SerializeField] Material Red;
     [SerializeField] Material Blue;
@@ -11,6 +11,7 @@ public class ColorChange : MonoBehaviour
     private void Awake()
     {
         playerMat = GetComponent<Renderer>().material;
+        
     }
     public void ChangeColor()
     {
