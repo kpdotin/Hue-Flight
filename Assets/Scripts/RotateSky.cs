@@ -9,6 +9,6 @@ public class RotateSky : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
+        GetComponent<Rigidbody>().angularVelocity =  Vector3.down * tumble;
     }
 }

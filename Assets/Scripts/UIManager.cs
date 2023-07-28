@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject Flight;
 
     [SerializeField] private Button[] MainScreenObjs;
+    [SerializeField] private Image[] LevelScreenObjs;
 
     [SerializeField] Image arcade;
     [SerializeField] Image endless;
@@ -32,6 +34,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject ShopPanel;
     [SerializeField] Image ViewPort;
     [SerializeField] GameObject ShopFlight;
+
+    [SerializeField] GameObject LevelSelectPanel;
 
     private void Update()
     {
@@ -124,11 +128,10 @@ public class UIManager : MonoBehaviour
         arcade.DOFade(1, 0.3f);
         arcade.transform.DOLocalMoveX(0, 0.5f);
         ModeScreenBackButton.DOFade(1f, 0.3f);
-    } // Goes to Mode Screen
+    } // Goes to Mode Screen from Main Screen
 
     public void OnModeExit()
     {
-
         endless.DOFade(0, 0.3f);
         endless.transform.DOLocalMoveX(825, 0.5f);
         arcade.DOFade(0, 0.3f);
@@ -139,7 +142,7 @@ public class UIManager : MonoBehaviour
             MainScreenIn();
             ModeSelectPanel.SetActive(false);
         });
-    } //Goes to Main Screen
+    } //Goes to Main Screen from Mode Screen
 
     public void OnSettingsEnter()
     {
@@ -195,6 +198,49 @@ public class UIManager : MonoBehaviour
             MainScreenIn();
         });
         
+    }
+
+    public void LevelSelect()
+    {
+        string objName = EventSystem.current.currentSelectedGameObject.name;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(objName);
+    }
+
+    public void OnArcadeEnter()
+    {
+        endless.DOFade(0, 0.3f);
+        endless.transform.DOLocalMoveX(825, 0.5f);
+        arcade.DOFade(0, 0.3f);
+        arcade.transform.DOLocalMoveX(-825, 0.5f);
+        Flight.transform.DOMove(new Vector3(1.26199996f, 1.46500003f, -7.91300011f), 0.5f).SetEase(Ease.InOutSine).OnComplete(() => {
+            Flight.transform.position = new Vector3(-0.776000023f, 1.70000005f, -8.68500042f);
+            Flight.SetActive(false);
+        });
+        ModeScreenBackButton.DOFade(0f, 0.3f).OnComplete(() =>
+        {
+            ModeSelectPanel.SetActive(false);
+            LevelSelectPanel.SetActive(true);
+            var sequence = DOTween.Sequence();
+
+            foreach (var shape in LevelScreenObjs)
+            {
+                sequence.Append(shape.DOFade(1, 10f));
+            }
+        });
+    }
+    public void OnLevelExit()
+    {
+        LevelSelectPanel.SetActive(false);
+        var sequence = DOTween.Sequence();
+
+        foreach (var shape in LevelScreenObjs)
+        {
+            sequence.Append(shape.DOFade(0, 10f));
+        }
+        Flight.SetActive(true);
+        Flight.transform.DOMove(new Vector3(0.05f, 1.46f, -8.35f), 0.5f).SetEase(Ease.InOutSine);
+        MainPanel.SetActive(true);
+        MainScreenIn();
     }
 
 }
