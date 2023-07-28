@@ -21,25 +21,25 @@ public class InGameUI : MonoBehaviour
 
     public TextMeshProUGUI displayTimer;
 
-    ShieldPower shieldPower;
+    //ShieldPower shieldPower;
     AsteroidRotate obstacleCollision;
     public bool shieldTimerOn = false;
     int shieldTimer = 10;
     private void Start()
     {
         obstacleCollision = FindObjectOfType<AsteroidRotate>();
-        shieldPower = FindObjectOfType<ShieldPower>();
+        //shieldPower = FindObjectOfType<ShieldPower>();
         colorChangeScript = FindObjectOfType<ColorChange>();
     }
     private void OnEnable()
     {
         OnCoinCollected += CoinUpdater;
-        shieldPower.shieldEvent += ShieldToggle;
+        //shieldPower.shieldEvent += ShieldToggle;
     }
     private void OnDisable()
     {
         OnCoinCollected -= CoinUpdater;
-        shieldPower.shieldEvent -= ShieldToggle;
+        //shieldPower.shieldEvent -= ShieldToggle;
     }
     // Update is called once per frame
     void Update()
@@ -95,6 +95,7 @@ public class InGameUI : MonoBehaviour
     public void Back()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 
     void ShieldToggle()

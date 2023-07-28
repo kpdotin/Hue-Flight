@@ -11,33 +11,41 @@ public class AsteroidRotate : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
-        shieldPower = FindObjectOfType<ShieldPower>();
-        timerCondition = FindObjectOfType<InGameUI>();
+        //shieldPower = FindObjectOfType<ShieldPower>();
+        //timerCondition = FindObjectOfType<InGameUI>();
     }
 
     private void OnEnable()
     {
-        shieldPower.shieldEvent += ShieldToggle;
+        //shieldPower.shieldEvent += ShieldToggle;
     }
 
     private void OnDisable()
     {
-        shieldPower.shieldEvent -= ShieldToggle;
+        //shieldPower.shieldEvent -= ShieldToggle;
     }
     void ShieldToggle()
     {
         shieldOn = !shieldOn;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+        //if (!shieldOn || !timerCondition.shieldTimerOn)
+        //{
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene(10);
+        //}
+        //else
+        //{
+        //    ShieldToggle();
+        //}
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(10);
+    //}
+    private void OnTriggerEnter(Collider other)
     {
-        if (!shieldOn || !timerCondition.shieldTimerOn)
+        if (other.tag == "Player")
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(10);
-        }
-        else
-        {
-            ShieldToggle();
         }
     }
 }

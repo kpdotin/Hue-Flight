@@ -240,4 +240,9 @@ public class UIManager : MonoBehaviour
         MainScreenIn();
     }
 
+    public void OnSampleLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(12);
+    }
+
 }

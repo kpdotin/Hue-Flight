@@ -12,9 +12,9 @@ public class BlueBoom : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if(!colorChangeScript.toggleColor)
+        if(!colorChangeScript.toggleColor && other.tag == "Player")
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(10);
         }
     }
 }
