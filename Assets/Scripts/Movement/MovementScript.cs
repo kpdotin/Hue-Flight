@@ -1,9 +1,4 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class MovementScript : MonoBehaviour
 {
@@ -41,16 +36,20 @@ public class MovementScript : MonoBehaviour
         inputManager.OnRightTap -= OnRightTap;
         inputManager.OnLeftTap -= OnLeftTap;
         inputManager.OnTouchCanceled -= TouchCanceled;
-        
+
         cloudScript.OnCloudCollision -= ToggleStinkyCloud;
     }
 
+    private void Start()
+    {
+        if (cloudScript == null) { return; }
+    }
 
     void FixedUpdate()
     {
         if (!canceled)
         {
-            if(!stinkyCloud)
+            if (!stinkyCloud)
             {
                 if (leftTap)
                 {
@@ -126,7 +125,7 @@ public class MovementScript : MonoBehaviour
     }
     void TouchStarted()
     {
-         canceled = false;
+        canceled = false;
     }
     void TouchCanceled()
     {

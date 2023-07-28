@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static InputManager;
+using UnityEngine.SceneManagement;
 
 public class ColorChange : MonoBehaviour
 {
-    bool toggleColor = false;
+    public bool toggleColor = true;
     private Material playerMat;
     [SerializeField] Material Red;
     [SerializeField] Material Blue;
-    private void Start()
+    Scene scene;
+    private void Awake()
     {
         playerMat = GetComponent<Renderer>().material;
     }

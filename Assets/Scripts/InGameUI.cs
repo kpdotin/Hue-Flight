@@ -19,7 +19,7 @@ public class InGameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinsText.text = "Coins : " + coinsCollected.ToString();
+        coinsText.text = "Orbs : " + coinsCollected.ToString();
     }
 
     void CoinUpdater()

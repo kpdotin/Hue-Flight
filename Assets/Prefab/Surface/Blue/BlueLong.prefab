@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 966557336617525784}
   - component: {fileID: 5210440675926098675}
   - component: {fileID: 8524090184184345855}
+  - component: {fileID: 1988283982257319906}
   m_Layer: 0
   m_Name: BlueLong
   m_TagString: Untagged
@@ -105,3 +106,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 2.957487, z: 10}
   m_Center: {x: 0, y: 1.3020041, z: 0}
+--- !u!114 &1988283982257319906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8869266878767535073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8008347bdc252c04db4128abf8aaaac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
