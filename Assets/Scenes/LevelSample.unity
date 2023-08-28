@@ -5672,6 +5672,10 @@ PrefabInstance:
       propertyPath: buttonTransform
       value: 
       objectReference: {fileID: 412732071}
+    - target: {fileID: 4965182621694407516, guid: ae40750827925eb46ab77f459e811e0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5913100338499949014, guid: ae40750827925eb46ab77f459e811e0e, type: 3}
       propertyPath: m_Size.x
       value: 0.69199145
