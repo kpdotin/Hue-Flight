@@ -102,7 +102,7 @@ public class MovementScript : MonoBehaviour
                     //DOTWEEN
                     //ship.DOLocalRotate(new Vector3(-45, 90, 90), 0.5f);
                 }
-            }
+            } // Stinky Cloud Active
 
         }
 
