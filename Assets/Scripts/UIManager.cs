@@ -117,7 +117,7 @@ public class UIManager : MonoBehaviour
 
     public void OnPlayEnter()
     {
-        MainScreenOut();
+        //MainScreenOut();
         MainPanel.SetActive(false);
         ModeSelectPanel.SetActive(true);
         endless.DOFade(1, 0.3f);
@@ -136,14 +136,14 @@ public class UIManager : MonoBehaviour
         ModeScreenBackButton.DOFade(0f, 0.3f).OnComplete(() =>
         {
             MainPanel.SetActive(true);
-            MainScreenIn();
+            //MainScreenIn();
             ModeSelectPanel.SetActive(false);
         });
     } //Goes to Main Screen from Mode Screen
 
     public void OnSettingsEnter()
     {
-        MainScreenOut();
+        //MainScreenOut();
         MainScreen.SetActive(false);
         SettingsPanel.SetActive(true);
         SettingsBg.DOFade(1, 0.5f);
@@ -157,9 +157,9 @@ public class UIManager : MonoBehaviour
         SoundButton.image.DOFade(0, 0.5f);
         SettingsBg.transform.DOLocalMoveY(1355, 0.5f).OnComplete(() =>
         {
-            MainScreenIn();
             SettingsPanel.SetActive(false);
             MainScreen.SetActive(true);
+            //MainScreenIn();
         });
     } //Settings Page to Main Screen
 
@@ -169,7 +169,7 @@ public class UIManager : MonoBehaviour
 
     public void OnShopsEnter()
     {
-        MainScreenOut();
+        //MainScreenOut();
         MainPanel.SetActive(false);
         Flight.transform.DOMove(new Vector3(1.26199996f, 1.46500003f, -7.91300011f), 0.5f).SetEase(Ease.InOutSine).OnComplete(() =>
         {
@@ -179,8 +179,6 @@ public class UIManager : MonoBehaviour
             Flight.transform.position = new Vector3(-0.776000023f, 1.70000005f, -8.68500042f);
             Flight.SetActive(false);
         });
-        
-        
     }
 
     public void OnShopsExit()
@@ -192,6 +190,7 @@ public class UIManager : MonoBehaviour
             Flight.SetActive(true);
             Flight.transform.DOMove(new Vector3(0.05f, 1.46f, -8.35f), 0.5f).SetEase(Ease.InOutSine);
             MainPanel.SetActive(true);
+            //MainScreenIn();
         });
         
     }
@@ -236,7 +235,7 @@ public class UIManager : MonoBehaviour
         Flight.SetActive(true);
         Flight.transform.DOMove(new Vector3(0.05f, 1.46f, -8.35f), 0.5f).SetEase(Ease.InOutSine);
         MainPanel.SetActive(true);
-        MainScreenIn();
+        //MainScreenIn();
     }
 
     public void OnSampleLevel()
