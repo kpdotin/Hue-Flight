@@ -7,6 +7,12 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float rotateSpeed;
     [SerializeField] Transform ship;
 
+    public delegate void RotateRight();
+    public event RotateRight RotatingRight;
+
+    public delegate void RotateLeft();
+    public event RotateLeft RotatingLeft;
+
     private StinkyCloudScript cloudScript;
     private InputManager inputManager;
     Rigidbody rb;
@@ -27,7 +33,7 @@ public class MovementScript : MonoBehaviour
         inputManager.OnRightTap += OnRightTap;
         inputManager.OnLeftTap += OnLeftTap;
         inputManager.OnTouchCanceled += TouchCanceled;
-
+        
         cloudScript.OnCloudCollision += ToggleStinkyCloud;
     }
     private void OnDisable()
@@ -59,6 +65,8 @@ public class MovementScript : MonoBehaviour
 
                     ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed, -90, -135), 90, 90);
 
+                    //RotatingLeft();
+
                     //DOTWEEN
                     //ship.DOLocalRotate(new Vector3(-135, 90, 90), 0.5f);
                 }
@@ -71,6 +79,8 @@ public class MovementScript : MonoBehaviour
                     rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
 
                     ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed * (-1), -90, -45), 90, 90);
+
+                    //RotatingRight();
 
                     //DOTWEEN
                     //ship.DOLocalRotate(new Vector3(-45, 90, 90), 0.5f);
@@ -86,6 +96,8 @@ public class MovementScript : MonoBehaviour
 
                     ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed, -90, -135), 90, 90);
 
+                    //RotatingRight();
+
                     //DOTWEEN
                     //ship.DOLocalRotate(new Vector3(-135, 90, 90), 0.5f);
                 }
@@ -98,6 +110,8 @@ public class MovementScript : MonoBehaviour
                     rb.AddRelativeForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange);
 
                     ship.localRotation = Quaternion.Euler(Mathf.Clamp(rotateSpeed * (-1), -90, -45), 90, 90);
+
+                    //RotatingLeft();
 
                     //DOTWEEN
                     //ship.DOLocalRotate(new Vector3(-45, 90, 90), 0.5f);

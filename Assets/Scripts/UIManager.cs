@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject Flight;
 
     [SerializeField] private Button[] MainScreenObjs;
-    [SerializeField] private Image[] LevelScreenObjs;
+    [SerializeField] private Image[] LevelScreenObjs; // its supposed to fade in and out the level select objects. UNNECESSARY. REMOVE LATER.
 
     [SerializeField] Image arcade;
     [SerializeField] Image endless;
@@ -192,7 +192,6 @@ public class UIManager : MonoBehaviour
             Flight.SetActive(true);
             Flight.transform.DOMove(new Vector3(0.05f, 1.46f, -8.35f), 0.5f).SetEase(Ease.InOutSine);
             MainPanel.SetActive(true);
-            MainScreenIn();
         });
         
     }
