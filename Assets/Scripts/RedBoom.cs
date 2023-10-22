@@ -10,7 +10,7 @@ public class RedBoom : MonoBehaviour
     {
         colorChangeScript = FindObjectOfType<ColorChange>();
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (colorChangeScript.toggleColor && other.tag == "Player")
         {
