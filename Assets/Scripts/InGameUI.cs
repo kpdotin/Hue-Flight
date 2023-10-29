@@ -3,18 +3,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static InGameUI;
 
 public class InGameUI : MonoBehaviour
 {
     public delegate void CoinCollected();
-    public CoinCollected OnCoinCollected;
+    public static CoinCollected OnCoinCollected;
+
+    public static int coinsCollected;
 
     public Button colorChangeButton;
     public Sprite RedButton;
     public Sprite BlueButton;
 
     private ColorChange colorChangeScript;
-    int coinsCollected;
     public TextMeshProUGUI orbsText;
 
     public GameObject pausePanel;
@@ -27,6 +29,7 @@ public class InGameUI : MonoBehaviour
     int shieldTimer = 10;
     private void Start()
     {
+        coinsCollected = 0;
         obstacleCollision = FindObjectOfType<AsteroidRotate>();
         //shieldPower = FindObjectOfType<ShieldPower>();
         colorChangeScript = FindObjectOfType<ColorChange>();

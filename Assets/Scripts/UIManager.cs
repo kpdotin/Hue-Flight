@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Image ttp;
     [SerializeField] private Image title;
     [SerializeField] GameObject MainPanel; //Parent holding both MainScreen{Panel} and Settings {Panel}
@@ -37,6 +39,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject ShopFlight;
 
     [SerializeField] GameObject LevelSelectPanel;
+
+    #endregion
 
     private void Update()
     {
@@ -78,7 +82,9 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         FadeIn(1f);
     }
-    #endregion 
+    #endregion
+
+    #region Main Screen Behaviour
 
     public void TitleAnimOut()
     {
@@ -105,15 +111,15 @@ public class UIManager : MonoBehaviour
         }
     } //Enter Anim from Title Screen
 
-    private void MainScreenOut()
-    {
-        var sequence = DOTween.Sequence();
+    //private void MainScreenOut()
+    //{
+    //    var sequence = DOTween.Sequence();
 
-        foreach (var shape in MainScreenObjs)
-        {
-            sequence.Append(shape.image.DOFade(0, 10f));
-        }
-    } //Main Screen Fading to Zero
+    //    foreach (var shape in MainScreenObjs)
+    //    {
+    //        sequence.Append(shape.image.DOFade(0, 10f));
+    //    }
+    //} //Main Screen Fading to Zero
 
     public void OnPlayEnter()
     {
@@ -223,6 +229,7 @@ public class UIManager : MonoBehaviour
             }
         });
     }
+
     public void OnLevelExit()
     {
         LevelSelectPanel.SetActive(false);
@@ -243,4 +250,5 @@ public class UIManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(12);
     }
 
+    #endregion
 }

@@ -6,7 +6,7 @@ public class Coins : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        FindObjectOfType<InGameUI>().OnCoinCollected();
+        InGameUI.OnCoinCollected();
         Destroy(gameObject);
     }
 

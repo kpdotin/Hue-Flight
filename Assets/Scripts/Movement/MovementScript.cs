@@ -7,11 +7,11 @@ public class MovementScript : MonoBehaviour
     [SerializeField] float rotateSpeed;
     [SerializeField] Transform ship;
 
-    public delegate void RotateRight();
-    public event RotateRight RotatingRight;
+    //public delegate void RotateRight();
+    //public event RotateRight RotatingRight;
 
-    public delegate void RotateLeft();
-    public event RotateLeft RotatingLeft;
+    //public delegate void RotateLeft();
+    //public event RotateLeft RotatingLeft;
 
     private StinkyCloudScript cloudScript;
     private InputManager inputManager;

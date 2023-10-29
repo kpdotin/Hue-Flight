@@ -1,17 +1,28 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
 public class ShopManager : MonoBehaviour
 {
+    public class Status
+    {
+        public int Orbs { get; set; }
+    }
+
     [SerializeField] Mesh[] meshes;
     private MeshFilter meshFilter;
-    
-    // Start is called before the first frame update
+
+    [SerializeField] MeshFilter mainFlightMesh;
+
+    [SerializeField] TextMeshProUGUI OrbsText;
+
     void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
+        DeserilizeData();
     }
     
     public void OnClick()
@@ -28,5 +39,30 @@ public class ShopManager : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(305.474304f, 211.14621f, 293.921997f));
         }
     }
+    public void ClickedOK()
+    {
+        if(meshFilter.mesh != null)
+        {
+            mainFlightMesh.mesh = meshFilter.mesh;
+        }
+    }
 
+    public void DeserilizeData()
+    {
+        Status incoming = new Status();
+        using StreamReader reader = new StreamReader(Application.persistentDataPath + "/playerData.json");
+        {
+            string line = reader.ReadToEnd();
+            reader.Close();
+            if (JsonConvert.DeserializeObject<Status>(line) == null)
+            {
+                incoming.Orbs = 0;
+            }
+            else
+            {
+                incoming = JsonConvert.DeserializeObject<Status>(line);
+            }
+        }
+        OrbsText.text = "Orbs : " + incoming.Orbs.ToString(); 
+    }
 }
