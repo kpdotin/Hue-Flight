@@ -1,6 +1,4 @@
 using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
@@ -24,7 +22,8 @@ public class ShopManager : MonoBehaviour
         meshFilter = GetComponent<MeshFilter>();
         DeserilizeData();
     }
-    
+
+   
     public void OnClick()
     {
         string objName = EventSystem.current.currentSelectedGameObject.name;
@@ -38,6 +37,7 @@ public class ShopManager : MonoBehaviour
             meshFilter.mesh = meshes[int.Parse(objName) - 1];
             transform.rotation = Quaternion.Euler(new Vector3(305.474304f, 211.14621f, 293.921997f));
         }
+        
     }
     public void ClickedOK()
     {
@@ -45,11 +45,17 @@ public class ShopManager : MonoBehaviour
         {
             mainFlightMesh.mesh = meshFilter.mesh;
         }
+        DisplayFlight.OnUpdateRotation();
     }
 
     public void DeserilizeData()
     {
         Status incoming = new Status();
+        if (!File.Exists(Application.persistentDataPath + "/playerData.json"))
+        {
+            using FileStream stream = File.Create(Application.persistentDataPath + "/playerData.json");
+            stream.Close();
+        }
         using StreamReader reader = new StreamReader(Application.persistentDataPath + "/playerData.json");
         {
             string line = reader.ReadToEnd();

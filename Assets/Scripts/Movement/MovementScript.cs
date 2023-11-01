@@ -33,8 +33,8 @@ public class MovementScript : MonoBehaviour
         inputManager.OnRightTap += OnRightTap;
         inputManager.OnLeftTap += OnLeftTap;
         inputManager.OnTouchCanceled += TouchCanceled;
+        if (cloudScript != null) { cloudScript.OnCloudCollision += ToggleStinkyCloud; }
         
-        cloudScript.OnCloudCollision += ToggleStinkyCloud;
     }
     private void OnDisable()
     {
@@ -43,13 +43,10 @@ public class MovementScript : MonoBehaviour
         inputManager.OnLeftTap -= OnLeftTap;
         inputManager.OnTouchCanceled -= TouchCanceled;
 
-        cloudScript.OnCloudCollision -= ToggleStinkyCloud;
+        if (cloudScript != null) { cloudScript.OnCloudCollision -= ToggleStinkyCloud; }
+
     }
 
-    private void Start()
-    {
-        if (cloudScript == null) { return; }
-    }
 
     void FixedUpdate()
     {
